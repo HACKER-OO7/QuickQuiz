@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <style>
+    /* Centering everything within the page */
+    .jumbotron {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh; /* Full viewport height */
+      margin: 0;
+      text-align: center;
+    }
+
+    .jumbotron h1 {
+      margin-bottom: 20px;
+    }
+
+    .jumbotron p.lead {
+      margin-bottom: 20px;
+    }
+
+    .jumbotron .btn {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 18px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  {% include "quiz/navbar.html" %}
+
+  <div class="jumbotron">
+    <h1 class="display-4">Hello, Student</h1>
+    <p class="lead">Welcome to Quick Quiz</p>
+    <hr class="my-4" style="width: 50%;"> <!-- Centered and narrowed horizontal line -->
+    <p>You can access various features after login.</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="studentsignup" role="button">Create Your Account</a>
+      <a class="btn btn-primary btn-lg" href="studentlogin" role="button">Login</a>
+    </p>
+  </div>
+
+  {% include "quiz/footer.html" %}
+
+</body>
+
+</html>
+ 

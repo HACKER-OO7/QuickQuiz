@@ -1,0 +1,111 @@
+{% extends 'quiz/adminbase.html' %}
+{% load widget_tweaks %}
+{% block content %}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <style type="text/css">
+      a:link {
+        text-decoration: none;
+      }
+
+      .order-card {
+        color: #fff;
+        transition: 0.3s ease-in-out;
+      }
+
+      .bg-c-light-blue {
+        background: #4c9dbb; /* Light blue shade */
+      }
+
+      .card {
+        box-shadow: 0 1px 2.94px 0.06px rgba(4, 26, 55, 0.16);
+        border: none;
+        margin-bottom: 20px;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .card .card-block {
+        padding: 25px;
+        text-align: center;
+      }
+
+      .order-card i {
+        font-size: 26px;
+      }
+
+      .card:hover {
+        transform: translateY(-5px); /* Lift effect on hover */
+      }
+      
+      .f-left {
+        float: left;
+      }
+      
+      .f-right {
+        float: right;
+      }
+    </style>
+</head>
+
+<br><br>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <!-- Total Students -->
+    <div class="col-md-6 mb-4">
+      <div class="card bg-c-light-blue order-card">
+        <div class="card-block">
+          <h6 class="m-b-20">
+            <a href="admin-view-student" style="text-decoration: none; color:white;">Total Students</a>
+          </h6>
+          <h2><i class="fas fa-user-graduate"></i> <span>{{ total_student }}</span></h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- Total Teachers -->
+    <div class="col-md-6 mb-4">
+      <div class="card bg-c-light-blue order-card">
+        <div class="card-block">
+          <h6 class="m-b-20">
+            <a href="admin-view-teacher" style="text-decoration: none; color:white;">Total Teachers</a>
+          </h6>
+          <h2><i class="fas fa-chalkboard-teacher"></i> <span>{{ total_teacher }}</span></h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- Total Courses -->
+    <div class="col-md-6 mb-4">
+      <div class="card bg-c-light-blue order-card">
+        <div class="card-block">
+          <h6 class="m-b-20">
+            <a href="admin-view-course" style="text-decoration: none; color:white;">Total Courses</a>
+          </h6>
+          <h2><i class="fas fa-book"></i> <span>{{ total_course }}</span></h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- Total Questions -->
+    <div class="col-md-6 mb-4">
+      <div class="card bg-c-light-blue order-card">
+        <div class="card-block">
+          <h6 class="m-b-20">
+            <a href="admin-view-question" style="text-decoration: none; color:white;">Total Questions</a>
+          </h6>
+          <h2><i class="fas fa-question-circle"></i> <span>{{ total_question }}</span></h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+{% endblock content %}

@@ -1,0 +1,39 @@
+{% extends 'quiz/adminbase.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        a:link {
+            text-decoration: none;
+        }
+        .card {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h3 {
+            text-align: center;
+        }
+    </style>
+</head>
+<h3 >Approval of Teacher</h3>
+<div class="card">
+    <form method="POST" autocomplete="off">
+        {% csrf_token %}
+        <div class="form-group">
+            {% render_field teacherSalary.salary class="form-control" value="50000" style="display:none;" %}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Approve</button>
+    </form>
+</div>
+
+<br><br><br>
+
+{% endblock content %}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <style media="screen">
+    .jumbotron {
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+
+    .jumbotron h1 {
+      text-align: center;
+    }
+
+    .alert {
+      margin: 0px;
+    }
+  </style>
+
+  <title></title>
+</head>
+
+<body>
+
+  {% include "quiz/navbar.html" %}
+  <br><br>
+  <center>
+    <h3 class='alert alert-success' style="margin-bottom:0px;">About Us !</h3>
+  </center>
+  <div class="jumbotron" style="margin-bottom: 0px;margin-top: 0px;">
+    
+    <div class="summary">
+      <p class="lead">We Provide a Platform For Students To Practice Questions.</p>
+     
+      <p class="lead">Admin: Manage teachers, students, subjects, and dashboard.</p>
+      <p class="lead">Teacher: Add students, assign quizzes, and create questions.</p>
+      <p class="lead">Student: Access subjects, attempt quizzes, and view results.</p>
+      <p class="lead">Quiz: Supports MCQ and timed tests.</p>
+      <p class="lead">Dashboard: Track performance and compare students' results.</p>
+      <p class="lead">Questions: Maintain a database with subject-tagged questions.</p>
+      
+      </p>
+  </div>
+    <!-- <p>Explore our Website.</p> -->
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="/" role="button">Explore our Website.</a>
+    </p>
+  </div>
+
+  {% include "quiz/footer.html" %}
+</body>
+
+</html>

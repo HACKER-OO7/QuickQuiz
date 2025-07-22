@@ -1,0 +1,79 @@
+{% extends 'teacher/teacherbase.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        a:link {
+            text-decoration: none;
+        }
+
+        /* Card Styling */
+        .form-card {
+            margin: 50px auto;
+            padding: 30px;
+            max-width: 500px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+
+        .form-card h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .form-control {
+            margin-bottom: 15px;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+        }
+
+        .btn-primary {
+            background-color: #3498db;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+
+<div class="container">
+    <div class="form-card">
+        <h2>ADD EXAM</h2>
+        <form method="POST" autocomplete="off">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="course_name">Course Name</label>
+                {% render_field courseForm.course_name class="form-control" placeholder="Java" %}
+
+                <label for="question_number">Total Questions</label>
+                {% render_field courseForm.question_number class="form-control" placeholder="10" %}
+
+                <label for="total_marks">Total Marks</label>
+                {% render_field courseForm.total_marks class="form-control" placeholder="50" %}
+            </div>
+
+            <button type="submit" class="btn btn-primary">ADD</button>
+        </form>
+    </div>
+</div>
+
+<br><br><br>
+{% endblock content %}

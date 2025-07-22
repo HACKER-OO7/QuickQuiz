@@ -1,0 +1,128 @@
+{% extends 'student/studentbase.html' %}
+{% block content %}
+{% load static %}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <style>
+    #timer {
+      position: fixed;
+      top: 100px;
+      right: 40px;
+      padding: 10px 15px;
+      background-color: #e70d0d;
+      color: white;
+      font-size: 18px;
+      border-radius: 5px;
+      z-index: 1000;
+    }
+    .question-card {
+      margin-bottom: 20px;
+      border: 1px solid #00509e;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 80, 158, 0.2);
+    }
+    .card-header {
+      background-color: #007bff;
+      color: white;
+    }
+    .btn-info {
+      background-color: #4a90e2;
+      color: white;
+      border-color: #4a90e2;
+    }
+    .card-body {
+      background-color: #e6f0ff;
+      padding: 15px;
+    }
+    .form-check-label {
+      color: #003366;
+    }
+    .btn-info:hover {
+      background-color: #3366cc;
+      border-color: #3366cc;
+    }
+  </style>
+</head>
+
+<div class="jumbotron my-4">
+  <div id="timer">02:00</div>
+
+  <form class="form" autocomplete="off" onsubmit="return saveAns()" action="/student/calculate-marks" method="POST" id="examForm">
+    {% csrf_token %}
+    <h1 style="text-align: center;">{{course.course_name}}</h1>
+    {% for q in questions %}
+    
+    <div class="card question-card">
+      <div class="card-header">
+        <h3 class="text-white">{{ forloop.counter }}. {{ q.question }}</h3>
+        <h4 style="text-align: right; color: white;">[Marks {{ q.marks }}]</h4>
+      </div>
+      <div class="card-body">
+        <div class="form-check mx-4">
+          <input class="form-check-input" type="radio" name="{{ forloop.counter }}" id="{{ q.option1 }}" value="Option1">
+          <label class="form-check-label" for="option1">{{ q.option1 }}</label>
+        </div>
+        <div class="form-check mx-4">
+          <input class="form-check-input" type="radio" name="{{ forloop.counter }}" id="{{ q.option2 }}" value="Option2">
+          <label class="form-check-label" for="option2">{{ q.option2 }}</label>
+        </div>
+        <div class="form-check mx-4">
+          <input class="form-check-input" type="radio" name="{{ forloop.counter }}" id="{{ q.option3 }}" value="Option3">
+          <label class="form-check-label" for="option3">{{ q.option3 }}</label>
+        </div>
+        <div class="form-check mx-4">
+          <input class="form-check-input" type="radio" name="{{ forloop.counter }}" id="{{ q.option4 }}" value="Option4">
+          <label class="form-check-label" for="option4">{{ q.option4 }}</label>
+        </div>
+      </div>
+    </div>
+    
+    {% endfor %}
+     
+    <input class="btn btn-info btn-lg" type="submit" value="Submit">
+  </form>
+</div>
+
+<script>
+  function saveAns() {
+    var ele = document.getElementsByTagName('input');
+    for (var i = 0; i < ele.length; i++) {
+      if (ele[i].type === "radio" && ele[i].checked) {
+        setCookie(ele[i].name, ele[i].value, 3);
+      }
+    }
+  }
+
+  function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  }
+
+  let totalQuestions = {{ questions|length }};
+  let timePerQuestion = 120;
+  let timeLeft = totalQuestions * timePerQuestion;
+
+  function countdown() {
+    let minutes = Math.floor(timeLeft / 60);
+    let seconds = timeLeft % 60;
+    document.getElementById("timer").textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+    if (timeLeft > 0) {
+      timeLeft--;
+      setTimeout(countdown, 1000);
+    } else {
+      document.getElementById("examForm").submit();
+    }
+  }
+
+  countdown();  //SR
+</script>
+
+<br><br><br><br><br><br>
+{% endblock content %}

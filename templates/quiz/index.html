@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<style>
+  .jumbotron{
+    margin-bottom: 0px;
+  }
+  h1 {
+    color: #157fdc; /* Indigo color for the main heading */
+    font-family: 'Arial', sans-serif; /* Changed font style */
+  }
+  p {
+    color: #2F4F4F; /* Dark Slate Gray for the paragraphs */
+    font-family: 'Georgia', serif; /* Changed font style for the paragraphs */
+  }
+  .btn-custom {
+    background-color: #4682B4; /* Steel Blue color for the button */
+    font-size: 0.9rem; /* Reduced size for the button */
+    padding: 8px 20px; /* Adjusted padding */
+    color: white;
+    border: none;
+    text-transform: uppercase;
+  }
+</style>
+
+<body>
+  {% include "quiz/navbar.html" %}
+<br>
+<section id="section-jumbotron" class="jumbotron jumbotron-fluid d-flex justify-content-center align-items-center">
+  <div class="container text-center">
+    <h1 class="display-1">Quick Quiz</h1>
+      <p class="display-4 d-none d-sm-block">Welcome to Our Website</p>
+      <!-- <p><strong>Start to Improve from here:</strong></p> -->
+    
+    <!-- Updated button: Smaller size and no icon -->
+    <a href="/student/studentsignup" class="btn btn-lg btn-info" style="padding-right: 35px;">Sign Up</a>
+
+    <br><br><br>
+  </div>  
+</section>
+  {% include "quiz/footer.html" %}
+</body>
+
+</html>

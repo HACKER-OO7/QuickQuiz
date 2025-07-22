@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Report</title>
+    <!-- Load Chart.js for pie charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 30px 0;
+        }
+
+        .card {
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .card-header {
+            font-size: 1.5em;
+            font-weight: bold;
+            border-bottom: 2px solid #e0e0e0;
+            margin-bottom: 10px;
+        }
+
+        .card-body {
+            font-size: 1.1em;
+        }
+
+        table th,
+        table td {
+            text-align: center;
+            vertical-align: middle;
+            padding: 10px;
+            border-bottom: 1px solid #f2f2f2;
+        }
+
+        table th {
+            font-weight: bold;
+        }
+
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .leaderboard-table th,
+        .leaderboard-table td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        .pie-chart-container {
+            margin-top: 20px;
+        }
+
+        .chart-container {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .avg-score-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .avg-score-container h4 {
+            font-size: 1.6em;
+            color: #333;
+        }
+
+        .avg-label {
+            font-weight: bold;
+            color: #ff5733;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Course Report Title -->
+        <div class="card">
+            <div class="card-header">
+                Course Report for {{ course.course_name }}
+            </div>
+            <div class="card-body">
+                <h2>Leaderboard</h2>
+                <table class="leaderboard-table">
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Marks</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for entry in leaderboard %}
+                            <tr>
+                                <td>{{ entry.student }}</td>
+                                <td>{{ entry.marks }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Average Marks Card -->
+        <div class="card">
+            <div class="card-header">
+                Average Marks
+            </div>
+            <div class="card-body">
+                <div class="avg-score-container">
+                    <h4 class="avg-label">Average Marks: </h4>
+                    <h4>{{ avg_score }}</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- Marks Distribution Graph -->
+        <div class="card">
+            <div class="card-header">
+                Marks Distribution
+            </div>
+            <div class="card-body">
+                <canvas id="student_marks_graph" width="400" height="400"></canvas>
+                <script>
+                    var ctx = document.getElementById('student_marks_graph').getContext('2d');
+                    var marks = [{% for entry in leaderboard %}{{ entry.marks }}, {% endfor %}];
+                    var students = [{% for entry in leaderboard %}'{{ entry.student }}', {% endfor %}];
+                    var avg_marks = {{ avg_score }};
+
+                    var chart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: students,
+                            datasets: [{
+                                label: 'Marks',
+                                data: marks,
+                                backgroundColor: 'rgba(0, 123, 255, 0.5)',  // Transparent blue
+                                borderColor: '#007bff',
+                                borderWidth: 1
+                            },{
+                                label: 'Average Marks',
+                                data: Array(marks.length).fill(avg_marks),
+                                type: 'line',
+                                borderColor: '#ff5733',  // Bright average line color
+                                fill: false,
+                                borderWidth: 3,
+                                borderDash: [5, 5]  // Dotted line for the average
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    ticks: {
+                                        stepSize: 5
+                                    }
+                                }
+                            },
+                            responsive: true,
+                            maintainAspectRatio: false
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+
+       <!-- Question Analysis -->
+<div class="card">
+    <div class="card-header">
+        Question Analysis
+    </div>
+    <div class="card-body">
+        <!-- Loop through all the questions -->
+        <ol>
+            {% for question_stat in question_stats %}
+                <li>
+                    <!-- Display Question Text -->
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            {{ question_stat.question_text }}
+                        </div>
+                        <div class="card-body">
+                            <!-- Display Options and Percentages -->
+                            <ul>
+                                <li><strong>Option 1:</strong> {{ question_stat.options_text.Option1 }} ({{ question_stat.option_percentages.Option1|floatformat:2 }}%)</li>
+                                <li><strong>Option 2:</strong> {{ question_stat.options_text.Option2 }} ({{ question_stat.option_percentages.Option2|floatformat:2 }}%)</li>
+                                <li><strong>Option 3:</strong> {{ question_stat.options_text.Option3 }} ({{ question_stat.option_percentages.Option3|floatformat:2 }}%)</li>
+                                <li><strong>Option 4:</strong> {{ question_stat.options_text.Option4 }} ({{ question_stat.option_percentages.Option4|floatformat:2 }}%)</li>
+                            </ul>
+
+                            <!-- Pie Chart for Responses -->
+                            <div class="pie-chart-container">
+                                <canvas id="question_{{ question_stat.question_id }}" width="200" height="200"></canvas>
+                                <script>
+                                    var ctx = document.getElementById('question_{{ question_stat.question_id }}').getContext('2d');
+                                    var totalResponses = {{ question_stat.options.Option1 }} + {{ question_stat.options.Option2 }} + {{ question_stat.options.Option3 }} + {{ question_stat.options.Option4 }};
+                                    
+                                    // Prepare pie chart data
+                                    var chartData = {
+                                        labels: ['Option1', 'Option2', 'Option3', 'Option4'],
+                                        datasets: [{
+                                            label: 'Option Distribution',
+                                            data: [
+                                                ({{ question_stat.options.Option1 }} / totalResponses) * 100,
+                                                ({{ question_stat.options.Option2 }} / totalResponses) * 100,
+                                                ({{ question_stat.options.Option3 }} / totalResponses) * 100,
+                                                ({{ question_stat.options.Option4 }} / totalResponses) * 100
+                                            ],
+                                            backgroundColor: ['#FF5733', '#33FF57', '#3357FF', '#F4FF33'],
+                                        }]
+                                    };
+
+                                    // Create the pie chart
+                                    var chart = new Chart(ctx, {
+                                        type: 'pie',
+                                        data: chartData,
+                                        options: {
+                                            responsive: true,
+                                            maintainAspectRatio: false
+                                        }
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ol>
+    </div>
+</div>
+
+
+
+
+    </div>
+
+</body>
+</html>

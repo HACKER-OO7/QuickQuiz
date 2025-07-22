@@ -1,0 +1,176 @@
+{% extends 'student/studentbase.html' %}
+{% block content %}
+{% load static %}
+
+<head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js library -->
+    <style>
+        .container {
+            margin-top: 30px;
+            max-width: 1200px;
+        }
+
+        .panel-heading,
+        .card-header {
+            background-color: #0056b3;
+            color: white;
+        }
+
+        .card {
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .status.correct {
+            color: green;
+            font-weight: bold;
+        }
+
+        .status.incorrect {
+            color: red;
+            font-weight: bold;
+        }
+
+        .status.correct:before {
+            content: "\f00c";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            margin-right: 8px;
+        }
+
+        .status.incorrect:before {
+            content: "\f00d";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+
+<div class="container">
+    <!-- Exam Report Card -->
+    <div class="card">
+        <div class="card-header">Exam Report</div>
+        <div class="card-body">
+            <p><strong>Course Name:</strong> {{ exam.course_name }}</p>
+            <p><strong>Total Marks:</strong> {{ exam.total_marks }}</p>
+            <p><strong>Obtained Marks:</strong> {{ result.marks }}</p>
+            <p><strong>Exam Date:</strong> {{ result.date }}</p>
+        </div>
+    </div>
+
+    <!-- Questions & Answers Card -->
+    <div class="card">
+        <div class="card-header">Questions & Answers</div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Question</th>
+                        <th>Options</th>
+                        <th>Correct Answer</th>
+                        <th>Your Answer</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for que in questions %}
+                    <tr>
+                        <td>{{ que.question_text }}</td>
+                        <td>
+                            <ol>
+                                <li>{{ que.options.option1 }}</li>
+                                <li>{{ que.options.option2 }}</li>
+                                <li>{{ que.options.option3 }}</li>
+                                <li>{{ que.options.option4 }}</li>
+                            </ol>
+                        </td>
+                        <td>{{ que.correct_option }}</td>
+                        <td>{{ que.selected_option }}</td>
+                        <td class="status {% if que.question_status %}correct{% else %}incorrect{% endif %}">
+                            {% if que.question_status %}Correct{% else %}Incorrect{% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Performance Overview Card -->
+    <div class="card">
+        <div class="card-header">Performance Overview</div>
+        <div class="card-body">
+            <canvas id="performanceChart" width="400" height="200"></canvas>
+            <p><strong>Comparison with Others:</strong> {% if performance_data %}{{ performance_data.summary }}{% else
+                %}Data unavailable{% endif %}</p>
+        </div>
+    </div>
+
+    <!-- Rank Card -->
+    <div class="card">
+        <h2><div class="card-header">Rank</div></h2>
+        <div class="card-body">
+            <h2><p>Your rank among other students: <strong>{{ rank }}</strong></p></div></h2>
+        </div>
+    </div>
+</div>
+
+</br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+
+<script>
+    // Chart data and configuration
+    const ctx = document.getElementById('performanceChart').getContext('2d');
+    const performanceChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: {{ student_ids| safe }},  // Student IDs
+    datasets: [
+        {
+            label: 'Marks',
+            data: {{ marks| safe }},  // Marks data
+        backgroundColor: 'rgba(0, 123, 255, 0.6)', // Blue color for bars
+        borderColor: 'rgba(0, 123, 255, 1)',
+        borderWidth: 1
+                },
+        {
+            label: 'Average Marks',
+            data: Array({{ student_ids| length }}).fill({{ avg_score }}), // Average line
+        type: 'line',
+        borderColor: 'rgba(0, 0, 139, 1)', // Dark blue for average line
+        borderWidth: 2,
+        fill: false
+                }
+    ]
+        },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true,
+                    title: {
+                    display: true,
+                        text: 'Marks'
+                }
+            },
+            x: {
+                title: {
+                    display: true,
+                        text: 'Student IDs'
+                }
+            }
+        },
+        plugins: {
+            legend: {
+                display: true
+            }
+        }
+    }
+    });
+</script>
+
+{% endblock %}

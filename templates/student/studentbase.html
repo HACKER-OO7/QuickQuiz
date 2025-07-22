@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Gill Sans", sans-serif;
+      background-color: #f8f9fa; /* Light background */
+    }
+
+    header {
+      position: fixed;
+      background: #1005b0; /* White background */
+      padding: 20px;
+      width: 100%;
+      z-index: 1;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    }
+
+    .left_area h3 {
+      color: #222; /* Dark text */
+      margin: 0px;
+      text-transform: uppercase;
+      font-size: 22px;
+      font-weight: 900;
+    }
+
+    .logout_btn {
+      padding: 5px;
+      background: #007bff; /* Primary button color */
+      color: #fff;
+      float: right;
+      margin-top: -30px;
+      margin-right: 40px;
+      border-radius: 2px;
+      font-size: 15px;
+      font-weight: 600;
+      transition: 0.5s;
+    }
+
+    .logout_btn:hover {
+      background: #0056b3; /* Darker blue on hover */
+    }
+
+    .navbar {
+      background: #0ab0de; /* Light gray background */
+      position: fixed;
+      top: 70px; /* Below the header */
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 10px 0;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    }
+
+    .navbar img {
+      width: 50px; /* Profile image size */
+      border-radius: 50%; /* Round profile image */
+    }
+
+    .navbar h4 {
+      color: #222; /* Dark text */
+      margin: 0 10px;
+    }
+
+    .navbar a {
+      color: #222; /* Dark text */
+      padding: 10px 15px;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .navbar a:hover {
+      background: #007bff; /* Blue background on hover */
+      color: white; /* White text on hover */
+      border-radius: 4px; /* Rounded corners */
+    }
+
+    .content {
+      margin-top: 130px; /* Space for header and navbar */
+      padding: 20px;
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+</head>
+
+<body>
+
+  <!--header area start-->
+  <header>
+    <div class="left_area">
+      <h3>Quick Quiz</h3>
+    </div>
+    <div class="right_area">
+      <a href="/logout" class="logout_btn">Logout</a>
+    </div>
+  </header>
+  <!--header area end-->
+
+  <!--navbar start-->
+  <div class="navbar">
+    <center>
+      <img src="{% static "image/student.png" %}" class="profile_image" alt="">  
+      <h4>{{ request.user.first_name }}</h4>
+      <h6 style="color: rgb(34, 34, 34);">( Student )</h6>
+    </center>
+    <a href="/student/student-dashboard"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
+    <a href="/student/student-exam"><i class="fas fa-pencil-square-o"></i><span>Exam</span></a>
+    <a href="/student/student-marks"><i class="fas fa-area-chart"></i><span>Marks</span></a>
+  </div>
+  <!--navbar end-->
+
+  <!--content start-->
+  <div class="content">
+    <br>
+    {% block content %}
+    {% endblock content %}
+    <br>
+    {% include "quiz/footer.html" %}
+  </div>
+  <!--content end-->
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+{% extends 'student/studentbase.html' %}
+{% block content %}
+{%load static%}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+</head>
+<br><br>
+<div class="container my-4">
+    <div class="jumbotron">
+
+	      <h3 class="text-info text-center">Before you start the Exam, here are the rules</h3>
+
+        <div class="row">
+
+            <div class="card border-info mx-4 my-4">
+                <div class="card-body text-info">
+
+                    <h4 class="card-title">Exam Details :</h4>
+                    <p class="card-text">
+                        </p><ul style="list-style:decimal;">
+                            <li>Exam Name : {{course.course_name}}</li>
+                            <li>Total Question : {{total_questions}}</li>
+                            <li>Total Marks : {{total_marks}}</li>
+                            <li>Total Time : <span id="total-time"></span> min</li>
+                        </ul>
+                    <p></p>
+                    <script>
+                        // Assuming `total_questions` is available in your template context
+                        const totalQuestions = {{total_questions}};
+                        const totalTime = totalQuestions * 2;
+                        
+                        // Set the total time in the HTML
+                        document.getElementById('total-time').textContent = totalTime;
+                    </script>
+
+
+                    <h4 class="card-title">Rules :</h4>
+                    <p class="card-text">
+                        </p><ul style="list-style:decimal;">
+                      
+                                <li><span class="text-primary">Only one choice is correct.</span></li>
+                                <li>Questions carry different marks.</li>
+                                <li>No negative marking.</li>
+                                <li>Answers auto-submit upon timeout.</li>
+                                <li>Questions appear in random order.</li>
+                                <li>Refreshing the page counts the question as attempted.</li>
+                                <li>See your marks immediately upon submission.</li>
+                                <li>Answer as quickly as possible.</li>
+                            
+                            
+                        </ul>
+                    <p></p>
+                    <a href="{% url 'start-exam' course.id  %}" class="btn btn-info">Let's Start</a>
+                </div>  
+                <div class="card-footer">Best Of Luck</div>  
+            </div>  
+        </div>  
+
+    </div>
+</div>
+
+<br><br><br><br><br><br>
+{% endblock content %}

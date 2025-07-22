@@ -1,0 +1,103 @@
+commands:
+
+CREATE VENV  PYTHON
+
+    mkdir quiz_project  
+    cd .\quiz_project\ 
+    python -m venv venv
+    venv\Scripts\activate
+            pip install django
+
+
+    django-admin startproject quickquiz
+
+    python manage.py startapp quiz
+
+    python manage.py startapp teacher
+
+    python manage.py startapp student
+
+    mkdir static
+    mkdir templates 
+
+
+    CREATE SUPERUSER
+        python manage.py createsuperuser
+
+
+
+    create DBMS models.py
+
+        python manag.py makemigrations  app_name
+
+        python manage.py migrate
+
+
+    create views.py 
+        function for handling front end request and response
+    
+    crete Html file inside templates
+        for frontend
+
+    frontend and view.py files upadate parallel while making project..
+
+
+    making requirements file.
+        pip3 freeze > requirements.txt
+
+
+Steps to run this project : 
+    1.  Download the project .zip file and extract it.
+
+    2.  Go to inside the project Quickquiz  
+            cd Quickquiz
+
+    3.  Install all requirements
+            pip install -r requirements.txt
+    
+    4.  Delete all the "migrations" folder inside the Django Apps like "quiz\migrations"    "teacher\migrations"   "student\migrations"
+
+    5.  create DBMS migration for all Django Apps  
+
+            python manage.py makemigrations quiz
+            python manage.py makemigrations student
+            python manage.py makemigrations teacher
+            py manage.py makemigrations
+            python manage.py migrate 
+
+    6.  create SuperUser / Admin for your project
+
+            python manage.py createsuperuser
+                #username  ,  email ,  password
+    
+    7.  run project 
+            python manage.py runserver 
+
+            OR
+            //run inside the network
+            python manage.py runserver IPV4:PORT_NUMBER
+
+    8. credentials
+        admin
+        admin@gmail.com
+        admin@1234
+
+        teacher1@gmail.com     Teach1  Teacher@1
+        teacher2@gmail.com     Teach2  Teacher@2
+        teacher3@gmail.com     Teach3  Teacher@3
+        teacher4@gmail.com     Teach4  Teacher@4
+
+        student1@gmail.com     Stud1   Student@1
+        student2@gmail.com     Stud2   Student@2
+        student3@gmail.com     Stud3   Student@3
+        student4@gmail.com     Stud4   Student@4
+        student5@gmail.com     Stud5   Student@5
+
+            
+
+
+
+
+
+
+=======

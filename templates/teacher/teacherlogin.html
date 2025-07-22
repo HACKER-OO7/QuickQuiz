@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+  <style>
+    body {
+      background-color: #ffffff; /* Light background color for the page */
+      font-family: Arial, sans-serif; /* Improved font */
+    }
+
+    .jumbotron {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100vh; /* Full viewport height */
+      margin: 0;
+    }
+
+    .login-box {
+      background-color: white; /* White background for the box */
+      border-radius: 10px; /* Rounded corners */
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+      padding: 40px; /* Add padding around the form */
+      width: 100%; /* Full width on smaller screens */
+      max-width: 400px; /* Max width for larger screens */
+    }
+
+    .login-box h1 {
+      margin-bottom: 20px;
+      color: #3498db; /* Primary color for the heading */
+    }
+
+    .form-control {
+      margin: 10px 0;
+      padding: 10px;
+      border: 2px solid #3498db;
+      border-radius: 5px;
+      transition: border-color 0.3s; /* Transition for border color */
+    }
+
+    .form-control:focus {
+      border-color: #2980b9; /* Darker shade on focus */
+      outline: none; /* Remove default outline */
+      box-shadow: 0 0 5px rgba(41, 128, 185, 0.5); /* Subtle shadow effect */
+    }
+
+    .btn {
+      width: 100%;
+      padding: 10px;
+      margin-top: 15px;
+      border-radius: 5px;
+      background-color: #3498db; /* Primary button color */
+      color: white; /* Button text color */
+      border: none; /* Remove border */
+      transition: background-color 0.3s; /* Transition for background color */
+    }
+
+    .btn:hover {
+      background-color: #2980b9; /* Darker shade on hover */
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .jumbotron {
+        height: auto; /* Allow height to adjust for smaller screens */
+        padding: 40px; /* Add padding for smaller screens */
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  {% include "quiz/navbar.html" %}
+
+  <div class="jumbotron">
+    <div class="login-box">
+      <h1 class="display-4">Teacher Login</h1>
+      <p class="lead">Please enter your login details</p>
+      <hr class="my-4" style="width: 50%;"> <!-- Narrower line for better centering -->
+
+      <form method="POST" class="form-group">
+        {% csrf_token %}
+        <input type="text" class="form-control" name="username" placeholder="Username" required>
+        <input type="password" class="form-control" name="password" placeholder="Password" required>
+        <input type="submit" class="btn btn-lg" value="Login">
+      </form>
+    </div>
+  </div>
+
+  {% include "quiz/footer.html" %}
+
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+{% load widget_tweaks %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <style>
+      /* General form styling */
+      form {
+        max-width: 600px; /* Set a max width for the form */
+        margin: 50px auto; /* Center the form */
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+      }
+
+      h3 {
+        text-align: center;
+        color: red;
+        margin-bottom: 30px;
+      }
+
+      /* Additional welcome message styling */
+      .welcome-message {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 1.2em;
+      }
+
+      /* Form row layout */
+      .form-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+      }
+
+      /* Styling for labels */
+      label {
+        flex-basis: 35%; /* Takes up 35% of the row's width */
+        text-align: left;
+        padding-right: 20px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+      }
+
+      /* Styling for input fields */
+      .form-control {
+        flex-basis: 65%; /* Takes up 65% of the row's width */
+      }
+
+      /* Button centered below the form */
+      button[type="submit"] {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    {% include "quiz/navbar.html" %}
+
+    <div class="welcome-message">
+      <p>Welcome to the Teacher Signup Page! Please fill in the details below to create your account.</p>
+    </div>
+  <br><br><br>
+    <h3>TEACHER SIGNUP</h3>
+
+    <form method="POST" autocomplete="off" enctype="multipart/form-data">
+      {% csrf_token %}
+      
+      <div class="form-row">
+        <label for="username">Username</label>
+        {% render_field userForm.username|attr:'required:true' class="form-control" placeholder="username" %}
+      </div>
+
+      <div class="form-row">
+        <label for="inputPassword4">Password</label>
+        {% render_field userForm.password|attr:'required:true' class="form-control" placeholder="password" %}
+      </div>
+
+      <div class="form-row">
+        <label for="first_name">First Name</label>
+        {% render_field userForm.first_name|attr:'required:true' class="form-control" placeholder="First Name" %}
+      </div>
+
+      <div class="form-row">
+        <label for="last_name">Last Name</label>
+        {% render_field userForm.last_name|attr:'required:true' class="form-control" placeholder="Last Name" %}
+      </div>
+
+      <div class="form-row">
+        <label for="mobile">Mobile</label>
+        {% render_field teacherForm.mobile|attr:'required:true' class="form-control" placeholder="Mobile" %}
+      </div>
+
+      <div class="form-row">
+        <label for="address">Address</label>
+        {% render_field teacherForm.address|attr:'required:true' class="form-control" placeholder="Address" %}
+      </div>
+
+      <div class="form-row">
+        <label for="profile_pic">Profile Picture</label>
+        {% render_field teacherForm.profile_pic|attr:'required:true' class="form-control" %}
+      </div>
+
+      <button type="submit" class="btn btn-primary">Sign Up</button>
+    </form>
+
+    {% include "quiz/footer.html" %}
+  </body>
+</html>

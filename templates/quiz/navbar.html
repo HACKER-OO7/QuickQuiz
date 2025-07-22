@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <style type="text/css">
+    .bs-example {
+      margin: 0px;
+    }
+
+    .navbar {
+      background-color: #00008B !important; /* Dark Blue background */
+    }
+
+    .navbar-brand {
+      font-family: Arial, sans-serif; /* Changed to Arial */
+      font-size: 20px;
+      color: #ffffff;
+      padding: 5px;
+      border: 2px solid #ffffff; /* Box around  */
+      border-radius: 5px;
+      text-align: center;
+      display: inline-block;
+    }
+
+    .navbar-nav .nav-link {
+      font-family: Arial, sans-serif; /* Changed font */
+      color: #ffffff;
+      padding-left: 30px;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: #FFD700; /* Golden color on hover */
+    }
+
+    .navbar-collapse {
+      justify-content: flex-end; /* Align all buttons to the right */
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="bs-example">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+      <a href="/" class="navbar-brand">Quick Quiz</a> <!-- Box added around the text -->
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav">
+          <a href="/" class="nav-item nav-link active">Home</a>
+          <a href="/teacher/teacherclick" class="nav-item nav-link">Teacher</a>
+          <a href="/student/studentclick" class="nav-item nav-link">Student</a>
+          <a href="/adminclick" class="nav-item nav-link">Admin</a>
+          <a href="/aboutus" class="nav-item nav-link">Project Details</a>
+          <!-- <a href="/contactus" class="nav-item nav-link">Contact Us</a> -->
+        </div>
+      </div>
+    </nav>
+  </div>
+
+</body>
+
+</html>
