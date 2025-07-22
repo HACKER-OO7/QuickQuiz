@@ -1,0 +1,74 @@
+{
+    "course_id": "6",
+    "total_que": 5,
+    "student_id": 9,
+    "obtain_marks": 20,
+    "correct_question": 3,
+    "questions": [
+        {
+            "question_id": "1",
+            "question_text": "What will be the output of the following Python code?\r\n\r\ni = 1\r\nwhile True:\r\n    if i%3 == 0:\r\n        break\r\n    print(i)\r\n \r\n    i + = 1",
+            "options": {
+                "option1": "1 2 3",
+                "option2": "error",
+                "option3": "1 2",
+                "option4": "none of the mentioned"
+            },
+            "correct_option": "Option2",
+            "selected_option": "Option3",
+            "question_status": false
+        },
+        {
+            "question_id": "2",
+            "question_text": "What are the values of the following Python expressions?\r\n\r\n 2**(3**2)\r\n (2**3)**2\r\n 2**3**2",
+            "options": {
+                "option1": "512, 64, 512",
+                "option2": "512, 512, 512",
+                "option3": "64, 512, 64",
+                "option4": "64, 64, 64"
+            },
+            "correct_option": "Option1",
+            "selected_option": "Option1",
+            "question_status": true
+        },
+        {
+            "question_id": "3",
+            "question_text": "What will be the output of the following Python code?\r\n\r\nl=[1, 0, 2, 0, 'hello', '', []]\r\nlist(filter(bool, l))",
+            "options": {
+                "option1": "[1, 0, 2, \u2018hello\u2019, \u201d, []]",
+                "option2": "Error",
+                "option3": "[1, 2, \u2018hello\u2019]",
+                "option4": "[1, 0, 2, 0, \u2018hello\u2019, \u201d, []]"
+            },
+            "correct_option": "Option3",
+            "selected_option": "Option1",
+            "question_status": false
+        },
+        {
+            "question_id": "4",
+            "question_text": "Which of the following functions is a built-in function in python?",
+            "options": {
+                "option1": "factorial()",
+                "option2": "print()",
+                "option3": "seed()",
+                "option4": "sqrt()"
+            },
+            "correct_option": "Option2",
+            "selected_option": "Option2",
+            "question_status": true
+        },
+        {
+            "question_id": "5",
+            "question_text": "Who developed Python Programming Language?",
+            "options": {
+                "option1": "Wick van Rossum",
+                "option2": "Rasmus Lerdorf",
+                "option3": "Guido van Rossum",
+                "option4": "Niene Stom"
+            },
+            "correct_option": "Option3",
+            "selected_option": "Option3",
+            "question_status": true
+        }
+    ]
+}

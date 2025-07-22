@@ -1,0 +1,61 @@
+{
+    "course_id": "9",
+    "total_que": 4,
+    "student_id": 9,
+    "obtain_marks": 5,
+    "correct_question": 1,
+    "questions": [
+        {
+            "question_id": "1",
+            "question_text": "which colour fire flame is the hottest ?",
+            "options": {
+                "option1": "Blue",
+                "option2": "Red",
+                "option3": "Yellow",
+                "option4": "Violet"
+            },
+            "correct_option": "Option4",
+            "selected_option": "Option2",
+            "question_status": false
+        },
+        {
+            "question_id": "2",
+            "question_text": "what is the shape of rainbow ?",
+            "options": {
+                "option1": "Circular arc",
+                "option2": "Circle",
+                "option3": "parabolic curve",
+                "option4": "hyperbolic"
+            },
+            "correct_option": "Option1",
+            "selected_option": "Option4",
+            "question_status": false
+        },
+        {
+            "question_id": "3",
+            "question_text": "What will be next number of series  : 2,3,5,7,11,__",
+            "options": {
+                "option1": "23",
+                "option2": "17",
+                "option3": "13",
+                "option4": "19"
+            },
+            "correct_option": "Option3",
+            "selected_option": "Option3",
+            "question_status": true
+        },
+        {
+            "question_id": "4",
+            "question_text": "Possible state of water is",
+            "options": {
+                "option1": "solid",
+                "option2": "liquid",
+                "option3": "gaseous",
+                "option4": "All"
+            },
+            "correct_option": "Option4",
+            "selected_option": "Option2",
+            "question_status": false
+        }
+    ]
+}

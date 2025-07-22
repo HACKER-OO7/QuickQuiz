@@ -1,0 +1,48 @@
+{
+    "course_id": "5",
+    "total_que": 3,
+    "student_id": 7,
+    "obtain_marks": 10,
+    "correct_question": 2,
+    "questions": [
+        {
+            "question_id": "1",
+            "question_text": "What is the value of p in the following C++ code snippet?\r\n\r\n\r\n\r\n #include <iostream>\r\n    using namespace std;\r\n    int main()\r\n    {\r\n        int p;\r\n        bool a = true;\r\n        bool b = false;\r\n        int x = 10;\r\n        int y = 5;\r\n        p = ((x | y) + (a + b));\r\n        cout << p;\r\n        return 0;\r\n    }",
+            "options": {
+                "option1": "12",
+                "option2": "0",
+                "option3": "2",
+                "option4": "16"
+            },
+            "correct_option": "Option4",
+            "selected_option": "Option2",
+            "question_status": false
+        },
+        {
+            "question_id": "2",
+            "question_text": "By default, all the files in C++ are opened in _________ mode.",
+            "options": {
+                "option1": "Binary",
+                "option2": "VTC",
+                "option3": "Text",
+                "option4": "ISCII"
+            },
+            "correct_option": "Option3",
+            "selected_option": "Option3",
+            "question_status": true
+        },
+        {
+            "question_id": "3",
+            "question_text": "What will be the output of the following C++ function?\r\n\r\nint main()\r\n    {\r\n        register int i = 1;\r\n        int *ptr = &i;\r\n        cout << *ptr;\r\n\treturn 0;\r\n    }",
+            "options": {
+                "option1": "Runtime error may be possible",
+                "option2": "Compiler error may be possible",
+                "option3": "1",
+                "option4": "0"
+            },
+            "correct_option": "Option2",
+            "selected_option": "Option2",
+            "question_status": true
+        }
+    ]
+}

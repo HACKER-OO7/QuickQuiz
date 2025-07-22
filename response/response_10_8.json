@@ -1,0 +1,35 @@
+{
+    "course_id": "10",
+    "total_que": 2,
+    "student_id": 8,
+    "obtain_marks": 10,
+    "correct_question": 2,
+    "questions": [
+        {
+            "question_id": "1",
+            "question_text": "Which kind of Lalguage is Java ?",
+            "options": {
+                "option1": "Lower Level",
+                "option2": "Object oriented",
+                "option3": "Assembly",
+                "option4": "none"
+            },
+            "correct_option": "Option2",
+            "selected_option": "Option2",
+            "question_status": true
+        },
+        {
+            "question_id": "2",
+            "question_text": "JAVA",
+            "options": {
+                "option1": "op1",
+                "option2": "op2",
+                "option3": "op3",
+                "option4": "op4"
+            },
+            "correct_option": "Option2",
+            "selected_option": "Option2",
+            "question_status": true
+        }
+    ]
+}

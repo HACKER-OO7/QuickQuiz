@@ -1,0 +1,48 @@
+{
+    "course_id": "7",
+    "total_que": 3,
+    "student_id": 9,
+    "obtain_marks": 20,
+    "correct_question": 2,
+    "questions": [
+        {
+            "question_id": "1",
+            "question_text": "Which of the following is not a main abstraction?",
+            "options": {
+                "option1": "Processor",
+                "option2": "Memory",
+                "option3": "Communication",
+                "option4": "Printer"
+            },
+            "correct_option": "Option4",
+            "selected_option": "Option4",
+            "question_status": true
+        },
+        {
+            "question_id": "2",
+            "question_text": "The properties of a file, like whether it is hidden, archived, read only or write only, are called as",
+            "options": {
+                "option1": "File content",
+                "option2": "File metadata",
+                "option3": "File intrinsic data",
+                "option4": "none of the above"
+            },
+            "correct_option": "Option2",
+            "selected_option": "Option4",
+            "question_status": false
+        },
+        {
+            "question_id": "3",
+            "question_text": "Which of the following concepts related to memory virtualization is central to the idea of page tables in operating systems?",
+            "options": {
+                "option1": "Processor domains",
+                "option2": "Communication Libraries",
+                "option3": "Memory domains",
+                "option4": "All of the above"
+            },
+            "correct_option": "Option3",
+            "selected_option": "Option3",
+            "question_status": true
+        }
+    ]
+}
